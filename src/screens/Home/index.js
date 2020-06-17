@@ -6,7 +6,6 @@ import {
   ScrollView,
   Dimensions,
   TouchableOpacity,
-  StyleSheet,
 } from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import * as GeneralAction from '../../store/actions/courseAction';
@@ -15,6 +14,7 @@ import Header from '../../components/Header';
 import ItemInfo from '../../components/ItemInfo';
 import Colors from '../../assets/globals/Colors';
 import LinearGradient from 'react-native-linear-gradient';
+import styles from './styles';
 
 const {width, height} = Dimensions.get('window');
 const Home = props => {
@@ -24,12 +24,12 @@ const Home = props => {
   useEffect(() => {
     try {
       GetData();
-      console.log(CourseData);
     } catch (err) {
       console.log(err);
     }
   }, []);
 
+  // Get course data
   const GetData = async () => {
     try {
       dispatch(GeneralAction.getData());
@@ -38,7 +38,6 @@ const Home = props => {
     }
   };
 
-  console.log('CourseData', CourseData);
   return (
     <ScrollView style={{position: 'relative'}}>
       <MyCarousel images={CourseData.img} height={height * 0.4} />
@@ -74,19 +73,6 @@ const Home = props => {
   );
 };
 
-const styles = StyleSheet.create({
-  buttonContainer: {
-    width: '100%',
-    paddingVertical: 20,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  buttonText: {
-    color: Colors.light,
-    fontSize: 25,
-    fontWeight: 'bold',
-    alignSelf: 'center',
-  },
-});
+
 
 export default Home;

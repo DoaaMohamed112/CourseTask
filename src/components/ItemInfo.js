@@ -15,28 +15,49 @@ import {Icons} from '../assets/icons';
 import moment from 'moment';
 import ListView from './ListView';
 
-const {width, height} = Dimensions.get('window');
+/*
+  ItemInfo Component:
+  General component for each section of data displayed on screen
+  props: NoBorder (bolean if no need for bottom border)
+         interesttitle (text for the interest field if needed)
+         title (text for title field if needed)
+         subtitle (text for subtitle field if needed)
+         details (text for details field if needed)
+         date (date for date field if needed)
+         address (text for address field if needed)
+         trainerInfo (object for trainer data field if needed)
+         List (array for List of data field if needed)
+ */
 
 const ItemInfo = props => {
-   
   return (
     <View
       style={{
         ...styles.container,
         ...{borderBottomWidth: !props.NoBorder ? 1 : 0},
       }}>
+      
+      {/* interesttitle */}
       {props.interesttitle != undefined && (
         <Text style={styles.interesttitle}>#{props.interesttitle}</Text>
       )}
+
+      {/* title */}
       {props.title != undefined && (
         <Text style={styles.title}>{props.title}</Text>
       )}
+
+      {/* subtitle */}
       {props.subtitle != undefined && (
         <Text style={styles.subtitle}>{props.subtitle}</Text>
       )}
+
+      {/* details */}
       {props.details != undefined && (
         <Text style={styles.details}>{props.details}</Text>
       )}
+
+      {/* date */}
       {props.date != undefined && (
         <View style={styles.contactContainer}>
           <Image source={Icons.dateIcon} style={styles.iconStyle} />
@@ -45,27 +66,36 @@ const ItemInfo = props => {
           </Text>
         </View>
       )}
+
+      {/* address */}
       {props.address != undefined && (
         <View style={styles.contactContainer}>
           <Image source={Icons.addressIcon} style={styles.iconStyle} />
           <Text style={styles.contactDetail}>{props.address}</Text>
         </View>
       )}
+
+      {/* trainerInfo */}
       {props.trainerInfo != undefined && (
         <View>
           <View style={styles.personInfo}>
+            {/* trainer image */}
            <View style={styles.avatarContainer}> 
               <Image
               source={{uri: props.trainerInfo.trainerImg.replace('https:','http:') }}
               style={styles.avatar}
             /></View>
+            {/* trainer name */}
             <Text style={styles.contactDetail}>
               {props.trainerInfo.trainerName}
             </Text>
           </View>
+          {/* trainer information */}
           <Text style={styles.details}>{props.trainerInfo.trainerInfo}</Text>
         </View>
       )}
+
+      {/* List */}
       {props.List != undefined && (
        <ListView ListData={props.List} style={styles.details}></ListView>
       )}

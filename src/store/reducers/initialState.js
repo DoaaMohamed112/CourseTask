@@ -12,7 +12,7 @@ export default {
         latitude: "",
         longitude: "",
         occasionDetail: "",
-        price: 200,
+        price: 0,
         questExplanation: {},
         questionnaire: {},
         reservTypes: [],

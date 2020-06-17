@@ -1,9 +1,12 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
-import Colors from '../assets/globals/Colors';
+
+/*
+  ListView Component for displaying list of data,
+  props needed: ListData, style (of text) 
+*/
 
 const ListView = props => {
-    console.log("List",props.ListData)
   return (
     <View>
       {props.ListData.map((item, index) => {

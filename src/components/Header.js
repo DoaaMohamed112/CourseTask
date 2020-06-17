@@ -9,11 +9,13 @@ import {
 import Colors from '../assets/globals/Colors';
 import {Icons} from '../assets/icons';
 
+
 const Header = props => {
   const [width, setWidth] =  useState(Dimensions.get('window').width);
   const [height, setHeight] =  useState(Dimensions.get('window').height);
 
   useEffect(() => {
+    // event listener for landscape or portrait detection 
     const updatLayout = () => {
       const { width, height } = Dimensions.get('window');
       setWidth(width);
@@ -28,12 +30,17 @@ const Header = props => {
 
   return (
     <View style={[styles.container,{height: height*0.1,marginTop: 10}]}>
+      {/* star icon */}
       <TouchableOpacity style={styles.iconContainer}>
         <Image source={Icons.saveIcon} style={styles.iconStyle} />
       </TouchableOpacity>
+
+      {/* share icon */}
       <TouchableOpacity style={styles.iconContainer}>
         <Image source={Icons.shareIcon} style={styles.iconStyle} />
       </TouchableOpacity>
+
+      {/* back Icon */}
       <TouchableOpacity style={styles.iconRightContainer}>
         <Image source={Icons.leftArrowIcon} style={styles.iconRightStyle} />
       </TouchableOpacity>
