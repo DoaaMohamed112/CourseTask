@@ -16,8 +16,8 @@ const Header = props => {
   useEffect(() => {
     const updatLayout = () => {
       const { width, height } = Dimensions.get('window');
-      setWidth(width < height ? width : height);
-      setHeight(width < height ? height : width);
+      setWidth(width);
+      setHeight(height);
     };
 
     Dimensions.addEventListener('change', updatLayout);

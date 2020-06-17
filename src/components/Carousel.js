@@ -12,8 +12,8 @@ const MyCarousel = props => {
   useEffect(() => {
     const updatLayout = () => {
       const { width, height } = Dimensions.get('window');
-      setWidth(width < height ? width : height);
-      setHeight(width < height ? height : width);
+      setWidth(width);
+      setHeight(height);
     };
 
     Dimensions.addEventListener('change', updatLayout);
@@ -23,7 +23,7 @@ const MyCarousel = props => {
   })
 
   return (
-    <View style={{width: width, minHeight: height*0.4}}>
+    <View  style={{width: width, minHeight: height*0.4}}>
       <SliderBox
         images={props.images}
         sliderBoxHeight={props.height}
@@ -31,10 +31,13 @@ const MyCarousel = props => {
         ImageComponentStyle={{borderRadius: 0, width: '100%',resizeMode: 'stretch'}}
         dotColor={Colors.activeDot}
         inactiveDotColor={Colors.inactiveDot}
+        parentWidth={width}
+        autoplay
         dotStyle={{
             width: 12,
             height: 12,
-            borderRadius: 12
+            borderRadius: 12,
+            marginHorizontal: 0
           }}
           disableOnPress={true}
       />
